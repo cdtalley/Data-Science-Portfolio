@@ -26,7 +26,7 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Unsupervised_Learni
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/NJ_Transit_%2B_Amtrak_(NEC)_Rail_Performance_Business_Solution.ipynb
 
 ### Supervised Learning: Heart Disease Prediction | Disease prediction using biometrics, model deployment.
--Implemented supervised machine learning models to predict heart disease using biometric data.
--Tech: Python, scikit-learn, decision tree, random forest, Flask, jupyter widgets, SVM, GridSearchCV.
+- Implemented supervised machine learning models to predict heart disease using biometric data.
+- Tech: Python, scikit-learn, decision tree, random forest, Flask, jupyter widgets, SVM, GridSearchCV.
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Heart_Disease_Prediction_using_Patient_Biometric_Data.ipynb
