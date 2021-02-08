@@ -11,6 +11,7 @@ Repository containing Drake Talley's portfolio, a collection of my data science 
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Capstone-Predicting_Telecom_Customer_Churn_(IBM_Watson_Analytics).ipynb
 
+
 ### NJ Transit + Amtrak (NEC) Rail Performance Business Solution: | Predicting Train Delays
 
 - Business use case, developed various machine learning models to predict train delays using supervised learning, unsupervised learning, and deep learning using Amtrak data.
@@ -18,11 +19,13 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/NJ_Transit_%2B_Amtrak_(NEC)_Rail_Performance_Business_Solution.ipynb
 
+
 ### Supervised Learning: Heart Disease Prediction | Disease prediction using biometrics, model deployment.
 - Implemented supervised machine learning models to predict heart disease using biometric data.
 - Tech: Python, scikit-learn, decision tree, random forest, Flask, jupyter widgets, SVM, GridSearchCV.
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Heart_Disease_Prediction_using_Patient_Biometric_Data.ipynb
+
 
 ### Unsupervised Learning: Boston Marathon Data | Clustering Algorithms and Dimensionality Reduction
 
@@ -30,6 +33,7 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning
 - Tech: Python, scikit-learn, PCA, t-SNE, KMeans clustering, DBSCAN clustering, interpolation, outlier removal.
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Unsupervised_Learning_Capstone_New_York_City_Bus_Data.ipynb
+
 
 ### XGBoost and Hyperparameter Tuning: Jane Street Market Data | XGBoost and RandomizedSearchCV
 
