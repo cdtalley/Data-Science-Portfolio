@@ -35,3 +35,5 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Unsupervised_Learni
 
 -  Large and complex financial dataset, GPU processed, created an XGBoost machine learning model to predict profitable trades. 
 -  Tech: Python, scikit-learn, XGBoost, RandomizedSearchCV, Pandas, NumPy.
+
+https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Jane_Street_Market_Prediction_XGBoost_and_Hyperparameter_Tuning.ipynb
