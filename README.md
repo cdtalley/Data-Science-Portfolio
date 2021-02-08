@@ -1,4 +1,4 @@
-# Data-Science-Portfolio
+# Data Science Portfolio
 
 Repository containing Drake Talley's portfolio of data science projects in the form of Jupyter notebooks.
 
