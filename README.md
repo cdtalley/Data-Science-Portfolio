@@ -4,6 +4,13 @@ Repository containing Drake Talley's portfolio, a collection of my data science 
 
 ## Contents
 
+### Corporate Bankruptcy Prediction | Developed model to predict at-risk companies using financial data.
+- Modeled corporate bankruptcy with 99% accuracy using a finely tuned XGBoost machine learning model.
+- Predictions allow creditors to analyze risk and help to mitigate unwanted transactions – saving time and money.
+- Tech: XGBoost, logistic regression, K-NN, decision tree, random forest, RandomizedSearchCV, SelectKBest, PCA.
+
+https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptcy_Prediction.ipynb
+
 ### Supervised Learning: Telecom Churn Dataset (IBM Watson Analytics) | Predicting Customer Churn.
 
 - Implemented and compared many different machine learning models to predict customer churn. 
