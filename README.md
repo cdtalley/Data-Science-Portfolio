@@ -1,6 +1,6 @@
 # Welcome to Chandler Drake Talley's Data Science Portfolio
 
-Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks.
+Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. For more information visit: https://chandlerdraketalley.com
 
 ## Contents
 
