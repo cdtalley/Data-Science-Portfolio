@@ -2,7 +2,7 @@
 
 Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. If you are having trouble viewing the .ipynb files due to GitHub error, please use the nbviewer links included below or simply paste the notebook link into nbviewer.
 
-For more information visit: https://chandlerdraketalley.com/portfolio/ 
+For more information along with blog posts and Google Colab links visit: https://chandlerdraketalley.com/portfolio/ 
 
 ## Contents
 
