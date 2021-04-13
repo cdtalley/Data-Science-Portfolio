@@ -1,6 +1,6 @@
 # Welcome to Chandler Drake Talley's Data Science Portfolio
 
-Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. If you are having trouble viewing the .ipynb files due to GitHub error, please use the below included Google Colab links on my website.
+Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. If you are having trouble viewing the .ipynb files due to GitHub error, please use the nbviewer links included below or simply paste the notebook link into nbviewer.
 
 For more information visit: https://chandlerdraketalley.com/portfolio/ 
 
@@ -13,6 +13,8 @@ For more information visit: https://chandlerdraketalley.com/portfolio/
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptcy_Prediction.ipynb
 
+https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptcy_Prediction.ipynb
+
 ### Supervised Learning: Telecom Churn Dataset (IBM Watson Analytics) | Predicting Customer Churn.
 
 - Implemented and compared many different machine learning models to predict customer churn. 
@@ -20,6 +22,7 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptc
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Capstone-Predicting_Telecom_Customer_Churn_(IBM_Watson_Analytics).ipynb
 
+https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Capstone-Predicting_Telecom_Customer_Churn_%28IBM_Watson_Analytics%29.ipynb
 
 ### NJ Transit + Amtrak (NEC) Rail Performance Business Solution: | Predicting Train Delays
 
@@ -27,7 +30,6 @@ https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning
 - Tech: Python, scikit-learn, SMOTE, GridSearchCV, SelectKBest, PCA, logistic regression classifier, gradient boosting classifier, KNN classifier, SVM classifier, decision tree classifier, random forest classifier, t-SNE, KMeans clustering, DBSCAN clustering, TensorFlow.
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/NJ_Transit_%2B_Amtrak_(NEC)_Rail_Performance_Business_Solution.ipynb
-
 
 ### Supervised Learning: Heart Disease Prediction | Disease prediction using biometrics, model deployment.
 - Implemented supervised machine learning models to predict heart disease using biometric data.
