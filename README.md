@@ -1,6 +1,6 @@
 # Welcome to Chandler Drake Talley's Data Science Portfolio
 
-Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. If you are having trouble viewing the .ipynb files due to GitHub error, please use the nbviewer links included below or simply paste the notebook link into nbviewer.
+Repository containing Chandler Drake Talley's portfolio, a collection of my data science projects in the form of Jupyter notebooks. If you are having trouble viewing the .ipynb files due to GitHub error, please use nbviewer linked here: https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/.
 
 For more information along with blog posts and Google Colab links visit: https://chandlerdraketalley.com/portfolio/ 
 
@@ -13,16 +13,12 @@ For more information along with blog posts and Google Colab links visit: https:/
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptcy_Prediction.ipynb
 
-https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/blob/main/Corporate_Bankruptcy_Prediction.ipynb
-
 ### Supervised Learning: Telecom Churn Dataset (IBM Watson Analytics) | Predicting Customer Churn.
 
 - Implemented and compared many different machine learning models to predict customer churn. 
 - Tech: Python, scikit-learn, SMOTE, GridSearchCV, SelectKBest, PCA, logistic regression classifier, gradient boosting classifier, KNN classifier, SVM classifier, decision tree classifier, random forest classifier.
 
 https://github.com/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Capstone-Predicting_Telecom_Customer_Churn_(IBM_Watson_Analytics).ipynb
-
-https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/blob/main/Supervised_Learning_Capstone-Predicting_Telecom_Customer_Churn_%28IBM_Watson_Analytics%29.ipynb
 
 ### NJ Transit + Amtrak (NEC) Rail Performance Business Solution: | Predicting Train Delays
 
