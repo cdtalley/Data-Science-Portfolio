@@ -1,3 +1,33 @@
+"""
+Streamlit RAG + LLM Demo
+========================
+
+This script uses Streamlit to provide a simple user interface for a RAG (Retrieval-Augmented Generation) workflow.
+We:
+1. Generate or load a small synthetic hospital-charges dataset.
+2. Build a FAISS index using Sentence Transformers.
+3. Use GPT-2 (downloaded without any account) to answer user queries with context retrieved from FAISS.
+
+Launch:
+-------
+    streamlit run streamlit_rag_app.py
+
+Dependencies:
+-------------
+- streamlit
+- pandas
+- numpy
+- torch
+- transformers
+- sentence-transformers
+- faiss-cpu (or faiss-gpu if you want GPU acceleration)
+
+Install:
+--------
+    pip install streamlit pandas numpy torch transformers sentence-transformers faiss-cpu
+
+"""
+
 import os
 import pandas as pd
 import numpy as np
@@ -8,12 +38,6 @@ import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from sentence_transformers import SentenceTransformer
 import faiss
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.llms import OpenAI
-from langchain.chains import RetrievalQA
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
 
 # -----------------------------------
 # Global Config
@@ -21,6 +45,7 @@ from langchain.text_splitter import CharacterTextSplitter
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"  # for vector embedding
 LLM_MODEL = "gpt2"  # GPT-2 is publicly available; no login needed
 CSV_PATH = "hospital_charges.csv"
+
 
 # -----------------------------------
 # Data + FAISS Index
@@ -72,6 +97,7 @@ def create_faiss_index(df: pd.DataFrame, text_cols: List[str]):
     index.add_with_ids(embeddings, ids)
 
     return index, corpus
+
 
 # -----------------------------------
 # LLM + RAG Query
@@ -131,6 +157,7 @@ def rag_query(query: str, index: faiss.IndexIDMap, corpus: List[str], top_k: int
 
     return tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
+
 # -----------------------------------
 # Streamlit App
 # -----------------------------------
@@ -171,6 +198,7 @@ def main():
     st.write("\n\n---")
     st.write("**Data Preview**")
     st.dataframe(st.session_state.df)
+
 
 if __name__ == "__main__":
     main()
