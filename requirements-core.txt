@@ -1,0 +1,13 @@
+# Core deps for notebooks (install first; avoids TF/torch file locks under OneDrive)
+pandas>=2.0.0
+numpy>=1.23.0
+openpyxl>=3.1.0
+scikit-learn>=1.2.0
+xgboost>=2.0.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+scipy>=1.10.0
+imbalanced-learn>=0.10.0
+jupyter>=1.0.0
+notebook>=7.0.0
+kaggle>=1.5.0

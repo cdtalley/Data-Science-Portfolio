@@ -2,30 +2,18 @@
 Streamlit RAG + LLM Demo
 ========================
 
-This script uses Streamlit to provide a simple user interface for a RAG (Retrieval-Augmented Generation) workflow.
-We:
+Simple RAG (Retrieval-Augmented Generation) UI: FAISS + Sentence Transformers + local GPT-2.
+No LangChain; uses Hugging Face transformers and FAISS directly.
+
 1. Generate or load a small synthetic hospital-charges dataset.
 2. Build a FAISS index using Sentence Transformers.
-3. Use GPT-2 (downloaded without any account) to answer user queries with context retrieved from FAISS.
+3. Use GPT-2 (no API keys) to answer user queries with retrieved context.
 
 Launch:
--------
-    streamlit run streamlit_rag_app.py
+    streamlit run Streamlit_Langchain_RAG_LLM.py
 
-Dependencies:
--------------
-- streamlit
-- pandas
-- numpy
-- torch
-- transformers
-- sentence-transformers
-- faiss-cpu (or faiss-gpu if you want GPU acceleration)
-
-Install:
---------
-    pip install streamlit pandas numpy torch transformers sentence-transformers faiss-cpu
-
+Dependencies: see requirements.txt
+    pip install -r requirements.txt
 """
 
 import os
