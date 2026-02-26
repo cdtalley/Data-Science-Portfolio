@@ -1,6 +1,6 @@
 # Chandler Drake Talley — Data Science Portfolio
 
-Production-grade ML projects spanning credit risk, customer retention, clinical decision support, transit operations, and quantitative finance. Each project includes **exploratory analysis**, **pipeline-based modeling** (no data leakage), **multi-metric evaluation**, **SHAP interpretability**, and **business recommendations**.
+Production-grade ML projects spanning credit risk, customer retention, clinical decision support, **time series analysis**, transit operations, and quantitative finance. Each project includes **exploratory analysis**, **pipeline-based modeling** (no data leakage), **multi-metric evaluation**, **SHAP interpretability**, and **business recommendations**.
 
 - **Interactive dashboard:** `streamlit run app.py` — interactive EDA, model comparisons, SHAP, and live predictions.
 - **View notebooks on GitHub** or [nbviewer](https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/).
@@ -21,6 +21,7 @@ Every notebook follows the workflow a senior data scientist uses in production:
 | **Interpretability** | SHAP TreeExplainer/KernelExplainer on every supervised project |
 | **Business framing** | Each project ends with stakeholder-ready recommendations and cost analysis |
 | **Threshold tuning** | Precision-recall tradeoff analysis with cost-sensitive optimization |
+| **Time series** | Daily trend, rolling means, day-of-week/hour seasonality, temporal heatmaps; `TimeSeriesSplit` and lag features where appropriate |
 
 ---
 
@@ -48,9 +49,16 @@ Features per project:
    pip install -r requirements-core.txt   # notebooks: pandas, sklearn, xgboost, jupyter, etc.
    pip install -r requirements.txt        # full stack: + tensorflow, RAG (streamlit, torch, transformers)
    ```
-   In Cursor/VS Code: choose kernel **"Python (Data Science Portfolio)"** or select `venv\Scripts\python.exe` as the interpreter. Core deps are in `requirements-core.txt`; `requirements.txt` adds TensorFlow and the RAG app deps (install when no other process is using the venv to avoid file locks).
+   In Cursor/VS Code: use the project venv as the notebook kernel so `numpy` and `portfolio_utils` are available: **Kernel → Select Kernel → Python Environments → `./venv/Scripts/python.exe`** (or **"Python (Data Science Portfolio)"** if it appears). This repo's `.vscode/settings.json` sets that as the default. If you see `ModuleNotFoundError: No module named 'numpy'`, the kernel is using a different Python — run `.\venv\Scripts\python.exe scripts/install_deps.py` then switch the kernel to the venv. Core deps are in `requirements-core.txt`; `requirements.txt` adds TensorFlow and the RAG app deps (install when no other process is using the venv to avoid file locks).
 
    Alternatively, without a venv: `pip install -r requirements.txt`. Or [uv](https://docs.astral.sh/uv/): `uv sync` (optional: `--extra rag --extra shap`).
+
+2. **Windows: console warning / timeouts**  
+   If you see `RuntimeWarning: Proactor event loop does not implement add_reader` or notebooks hang/timeout when running with `nbconvert --execute`, use the helper script so the correct asyncio policy is set before Jupyter starts:
+   ```powershell
+   python scripts/run_nbconvert.py --execute --inplace .\path\to\notebook.ipynb --ExecutePreprocessor.timeout=1200
+   ```
+   For interactive Jupyter, the warning is harmless; the kernel uses a fallback. If a cell runs for 20+ minutes with no output, stop the kernel and run with the script above or increase the timeout.
 
 3. **Download datasets (Kaggle API)**
    ```bash
@@ -102,9 +110,9 @@ Tech: Random Forest, Gradient Boosting, SVM, Logistic Regression, GridSearchCV, 
 ### NJ Transit + Amtrak Rail Delay Prediction
 **Business problem:** Predict train delays using supervised, unsupervised, and deep learning on 98K NEC rail trips. Enables proactive passenger notification and resource allocation.
 
-**Senior analysis includes:** Pipeline with SelectKBest, multi-metric stratified CV, SHAP for operational insight, and recommendations for schedule padding, crew allocation, and real-time passenger alerts.
+**Senior analysis includes:** **Time series analysis** (daily delay trend, 7-day rolling mean, day-of-week and hour-of-day seasonality, day×hour heatmap), pipeline with SelectKBest, multi-metric stratified CV, SHAP for operational insight, and recommendations for schedule padding, crew allocation, and real-time passenger alerts.
 
-Tech: Decision Tree, Random Forest, Gradient Boosting, KNN, SVM, KMeans, DBSCAN, t-SNE, TensorFlow, SHAP
+Tech: Time series (pandas, seaborn), Decision Tree, Random Forest, Gradient Boosting, KNN, SVM, KMeans, DBSCAN, t-SNE, TensorFlow, SHAP
 
 [View notebook](NJ_Transit_%2B_Amtrak_(NEC)_Rail_Performance_Business_Solution.ipynb)
 

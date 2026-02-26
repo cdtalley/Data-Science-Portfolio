@@ -109,6 +109,7 @@ def load_bankruptcy() -> pd.DataFrame:
         df = pd.read_csv(fp)
     except UnicodeDecodeError:
         df = pd.read_csv(fp, encoding="latin-1")
+    df.columns = df.columns.astype(str).str.strip()
     # Normalize target name for portfolio notebooks (Bankrupt? vs Flag)
     if "Flag" in df.columns and "Bankrupt?" not in df.columns:
         df = df.rename(columns={"Flag": "Bankrupt?"})
@@ -123,12 +124,19 @@ def load_telecom_churn() -> pd.DataFrame:
         df = pd.read_excel(xlsx)
     else:
         df = pd.read_csv(_find_csv(base, None))
-    # Normalize column names for notebook compatibility (customerID, TotalCharges, Churn)
+    df.columns = df.columns.astype(str).str.strip()
+    # Normalize column names for notebook compatibility (customerID, TotalCharges, Churn, tenure)
     rename = {}
     if "CustomerID" in df.columns and "customerID" not in df.columns:
         rename["CustomerID"] = "customerID"
     if "Total Charges" in df.columns and "TotalCharges" not in df.columns:
         rename["Total Charges"] = "TotalCharges"
+    if "Monthly Charges" in df.columns and "MonthlyCharges" not in df.columns:
+        rename["Monthly Charges"] = "MonthlyCharges"
+    if "Tenure Months" in df.columns and "tenure" not in df.columns:
+        rename["Tenure Months"] = "tenure"
+    elif "Tenure" in df.columns and "tenure" not in df.columns:
+        rename["Tenure"] = "tenure"
     if rename:
         df = df.rename(columns=rename)
     if "Churn" not in df.columns and "Churn Label" in df.columns:
