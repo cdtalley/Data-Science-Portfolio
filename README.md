@@ -11,8 +11,7 @@ This repo is the evidence: pipelines that avoid leakage, stratified evaluation, 
 |---|---|
 | **This repo** | [GitHub](https://github.com/cdtalley/Data-Science-Portfolio) — code, notebooks, and setup |
 | **View notebooks in browser** | [nbviewer](https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/) — no install required |
-| **Resume** | *[Add link: PDF in repo, Google Drive, or Dropbox]* |
-| **LinkedIn** | *[Add your LinkedIn profile URL]* |
+| **LinkedIn** (https://www.linkedin.com/in/drake-talley/) | *[Add your LinkedIn profile URL]* |
 
 ---
 
@@ -59,10 +58,52 @@ Every notebook follows the workflow a senior data scientist uses in production. 
 **Skills demonstrated (mapping to typical job descriptions):**
 
 - **ML engineering:** `sklearn.Pipeline`, `ColumnTransformer`, stratified CV, hyperparameter tuning (GridSearchCV / RandomizedSearchCV).  
+- **Model deployment:** FastAPI serving endpoint with `/predict`, `/predict/batch`, `/explain` (SHAP), Dockerfile, and docker-compose.  
 - **Interpretability & compliance:** SHAP (TreeExplainer/KernelExplainer), feature importance, threshold tuning for cost-sensitive decisions.  
 - **Evaluation:** Multi-metric reporting (precision, recall, F1, ROC-AUC), calibration for probability outputs, time-series-aware splits.  
-- **Production hygiene:** Reproducible seeds, locked envs (`pyproject.toml` / `requirements.txt`), smoke tests for notebooks.  
-- **Business communication:** Each project ends with stakeholder recommendations and, where relevant, cost/benefit framing.
+- **Data engineering:** DuckDB-backed SQL analytics alongside pandas; production-pattern for warehouse-style EDA.  
+- **Testing:** pytest suite for utilities, data loaders, API endpoints, and training pipeline.  
+- **Production hygiene:** Reproducible seeds, locked envs (`pyproject.toml` / `requirements.txt`), smoke tests, Docker.  
+- **Business communication:** Each project ends with stakeholder recommendations, quantified ROI, and cost/benefit framing.
+
+---
+
+## Model Serving API (FastAPI)
+
+The Telecom Churn model is deployed as a production-style REST API with cost-sensitive predictions and SHAP explanations.
+
+```bash
+# Train the model (saves artifacts to artifacts/)
+python -m api.train
+
+# Start the API
+uvicorn api.serve:app --reload
+
+# Or run everything in Docker
+docker-compose up
+```
+
+**Endpoints:**
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/health` | Health check |
+| `GET` | `/model/info` | Model metadata, metrics, feature names, cost assumptions |
+| `POST` | `/predict` | Single customer churn prediction with risk tier and action |
+| `POST` | `/predict/batch` | Batch predictions with summary statistics |
+| `POST` | `/explain` | SHAP-based explanation of top churn drivers |
+
+**Example:**
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{"gender":"Male","SeniorCitizen":0,"Partner":"Yes","Dependents":"No",
+       "tenure":12,"PhoneService":"Yes","MultipleLines":"No",
+       "InternetService":"Fiber optic","OnlineSecurity":"No","OnlineBackup":"Yes",
+       "DeviceProtection":"No","TechSupport":"No","StreamingTV":"No",
+       "StreamingMovies":"No","Contract":"Month-to-month","PaperlessBilling":"Yes",
+       "PaymentMethod":"Electronic check","MonthlyCharges":70.35}'
+```
 
 ---
 
@@ -196,3 +237,51 @@ Tech: Streamlit, FAISS, Sentence Transformers, GPT-2, PyTorch
 A clean reference notebook demonstrating the full senior workflow end-to-end: `set_seed` → Pipeline → stratified CV → multi-metric evaluation → SHAP.
 
 [View notebook](Modern_Classification_Workflow_Bankruptcy.ipynb) · [Best Practices Guide](docs/BEST_PRACTICES.md)
+
+---
+
+## Testing
+
+```bash
+pip install pytest httpx duckdb
+pytest tests/ -v
+```
+
+| Test file | Covers |
+|-----------|--------|
+| `test_ml_utils.py` | Seed reproducibility, pipeline construction, SHAP fallback |
+| `test_data_loader.py` | Data directory config, CSV discovery, Kaggle slug validation |
+| `test_train.py` | Preprocessing (encode, drop, target), cost-sensitive threshold optimization |
+| `test_api.py` | FastAPI endpoints: health, model info, predict, batch, explain |
+| `test_db_utils.py` | DuckDB loader, SQL queries, context manager, pre-built analytics queries |
+
+---
+
+## Repo structure
+
+```
+Data-Science-Portfolio/
+├── api/                    # FastAPI model serving
+│   ├── train.py            #   Train pipeline, serialize artifacts
+│   ├── serve.py            #   REST API (predict, explain, batch)
+│   └── schemas.py          #   Pydantic request/response models
+├── portfolio_utils/        # Shared Python package
+│   ├── data_loader.py      #   Kaggle-backed dataset loaders
+│   ├── ml_utils.py         #   Seeds, pipelines, SHAP helpers
+│   └── db_utils.py         #   DuckDB SQL analytics layer
+├── tests/                  # pytest suite
+├── docs/                   # Best practices guide
+├── scripts/                # Notebook automation (smoke tests, patching)
+├── advanced_visualization/ # Dash geospatial dashboard
+├── artifacts/              # Trained model + metadata (after api.train)
+├── data/                   # Datasets (after setup_data.py)
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+├── requirements.txt
+├── requirements-core.txt
+├── requirements-api.txt
+├── app.py                  # Streamlit portfolio dashboard
+├── setup_data.py           # Download all datasets
+└── *.ipynb                 # Project notebooks
+```

@@ -48,11 +48,18 @@ rag = [
     "faiss-cpu>=1.7",
 ]
 shap = ["shap>=0.44"]
-dev = ["pytest>=7", "ruff>=0.1"]
+duckdb = ["duckdb>=1.0"]
+api = [
+    "fastapi>=0.104",
+    "uvicorn[standard]>=0.24",
+    "joblib>=1.3",
+    "httpx>=0.25",
+]
+dev = ["pytest>=7", "ruff>=0.1", "httpx>=0.25"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["portfolio_utils*"]
+include = ["portfolio_utils*", "api*"]
 
 [tool.ruff]
 line-length = 100
@@ -62,5 +69,5 @@ target-version = "py39"
 select = ["E", "F", "I", "UP"]
 
 [tool.pytest.ini_options]
-testpaths = ["scripts"]
+testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]

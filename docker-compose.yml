@@ -1,0 +1,10 @@
+services:
+  churn-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+    environment:
+      - DATA_DIR=/app/data

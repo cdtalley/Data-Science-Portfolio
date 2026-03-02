@@ -45,6 +45,9 @@ Data/
 # Streamlit
 .streamlit/secrets.toml
 
+# Model artifacts (large binaries — train locally with: python -m api.train)
+artifacts/
+
 # OS
 .DS_Store
 Thumbs.db

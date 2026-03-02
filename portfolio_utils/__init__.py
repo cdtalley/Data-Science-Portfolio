@@ -38,6 +38,11 @@ except ImportError as e:
     get_data_dir = ensure_dataset = load_bankruptcy = load_telecom_churn = _require_data_loader
     load_nj_transit = load_heart = load_nyc_bus = load_jane_street = _require_data_loader
 
+try:
+    from portfolio_utils.db_utils import DuckDBLoader
+except ImportError:
+    DuckDBLoader = None
+
 __all__ = [
     "set_seed",
     "build_classification_pipeline",
@@ -50,4 +55,5 @@ __all__ = [
     "load_heart",
     "load_nyc_bus",
     "load_jane_street",
+    "DuckDBLoader",
 ]

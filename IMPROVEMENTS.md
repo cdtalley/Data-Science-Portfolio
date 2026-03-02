@@ -46,7 +46,7 @@ Run once: `python setup_data.py --no-jane-street`. Smoke test: `python scripts/s
 ### 3. Interpretability (XAI)
 
 - **SHAP**  
-  Add a short “Model interpretability” section in 1–2 notebooks (e.g. Bankruptcy, Churn) using `shap.TreeExplainer` for tree models or `shap.KernelExplainer` for others; `shap.summary_plot` and `shap.force_plot` for one-off explanations. Keeps the narrative “why does the model say this?”.
+  Add a short "Model interpretability" section in 1–2 notebooks (e.g. Bankruptcy, Churn) using `shap.TreeExplainer` for tree models or `shap.KernelExplainer` for others; `shap.summary_plot` and `shap.force_plot` for one-off explanations. Keeps the narrative "why does the model say this?".
 - **Feature importance**  
   For tree models, use built-in `feature_importances_` plus a bar plot; mention that SHAP gives instance-level and more consistent attributions.
 
@@ -59,18 +59,25 @@ Run once: `python setup_data.py --no-jane-street`. Smoke test: `python scripts/s
 - **Type hints**  
   Use in `portfolio_utils` and any new modules (e.g. `def load_*(...) -> pd.DataFrame`).
 
-### 5. MLOps-lite (optional)
+### 5. MLOps-lite
 
+- **Model serving**  
+  FastAPI endpoint for the churn pipeline with `/predict`, `/predict/batch`, `/explain` (SHAP), health check, and model metadata. Dockerized.
 - **Experiment logging**  
-  Log key runs (params + metrics) to a small JSON/CSV or to MLflow for a single “flagship” notebook.
+  Log key runs (params + metrics) to a small JSON/CSV or to MLflow for a single "flagship" notebook.
 - **CI**  
   GitHub Action that runs `scripts/smoke_test_notebooks.py` (and optionally `setup_data.py` with a small subset) so notebooks stay runnable.
 - **Containers**  
-  Optional `Dockerfile` + `docker-compose` for “run everything in one command” for recruiters.
+  `Dockerfile` + `docker-compose` for "run everything in one command."
 
-### 6. New content ideas (2026)
+### 6. Data engineering
 
-- **Small “from scratch” project**  
+- **DuckDB**  
+  `portfolio_utils.db_utils` provides a `DuckDBLoader` class for SQL-based EDA and feature engineering alongside pandas. Pre-built SQL queries for NJ Transit delay analysis and churn segmentation demonstrate the warehouse-query-then-model pattern used in production.
+
+### 7. New content ideas (2026)
+
+- **Small "from scratch" project**  
   One notebook using only `pyproject.toml` + `portfolio_utils`: load data → pipeline (preprocess + model) → cross_validate → SHAP summary. Shows clean structure.
 - **RAG/LLM**  
   Keep the Streamlit RAG demo; optionally add a second app (e.g. simple API with FastAPI) or a notebook that uses the same embedding + retrieval logic.
@@ -81,23 +88,28 @@ Run once: `python setup_data.py --no-jane-street`. Smoke test: `python scripts/s
 
 ## Implementation roadmap
 
-| Priority | Task | Effort |
+| Priority | Task | Status |
 |----------|------|--------|
-| High | Use `sklearn.pipeline.Pipeline` in at least one notebook (e.g. Bankruptcy or Churn) | 1–2 hrs |
-| High | Add `set_seed()` + document in README; use consistent `random_state` in notebooks | ~30 min |
-| High | Add `pyproject.toml` (and optional `uv`) so `pip install -e .` or `uv sync` works | ~30 min |
-| Medium | Add SHAP section to Corporate Bankruptcy or Telecom Churn notebook | 1–2 hrs |
-| Medium | Add `portfolio_utils.ml_utils` (e.g. `make_seed`, `build_classification_pipeline`) for reuse | ~1 hr |
-| Medium | GitHub Action: smoke test on push (and optionally data setup) | ~1 hr |
-| Low | DVC or `data/README.md` for dataset versioning | ~30 min |
-| Low | One “clean” end-to-end notebook (load → pipeline → CV → SHAP) as reference | 2–3 hrs |
+| High | `sklearn.pipeline.Pipeline` in notebooks (Bankruptcy, Churn, Heart, etc.) | ✓ Done |
+| High | `set_seed()` + consistent `random_state` | ✓ Done |
+| High | `pyproject.toml` + `uv sync` | ✓ Done |
+| High | FastAPI model serving endpoint (`api/`) with Docker | ✓ Done |
+| High | pytest suite (`tests/`) for utils, data loaders, API, training | ✓ Done |
+| High | Quantified business impact in notebooks (Bankruptcy, Churn) | ✓ Done |
+| Medium | SHAP sections in notebooks | ✓ Done |
+| Medium | `portfolio_utils.ml_utils` (seeds, pipelines, SHAP) | ✓ Done |
+| Medium | DuckDB SQL analytics layer (`portfolio_utils.db_utils`) | ✓ Done |
+| Medium | GitHub Action: smoke test on push | |
+| Low | DVC or `data/README.md` for dataset versioning | |
 
 ---
 
 ## Reference implementation (done)
 
-- **[Modern_Classification_Workflow_Bankruptcy.ipynb](Modern_Classification_Workflow_Bankruptcy.ipynb)** — End-to-end example: `set_seed`, load data, stratified split, single pipeline (scaler → SelectKBest → XGBoost), `cross_validate` with multiple metrics, holdout evaluation, and SHAP summary plot. Each section has a short “why” explanation in markdown.
+- **[Modern_Classification_Workflow_Bankruptcy.ipynb](Modern_Classification_Workflow_Bankruptcy.ipynb)** — End-to-end example: `set_seed`, load data, stratified split, single pipeline (scaler → SelectKBest → XGBoost), `cross_validate` with multiple metrics, holdout evaluation, SHAP summary plot, and quantified business impact.
 - **[docs/BEST_PRACTICES.md](docs/BEST_PRACTICES.md)** — Thorough explanation of each practice (reproducibility, pipelines, stratified splits, multiple metrics, SHAP, locked envs) and how to apply them in this repo.
+- **[api/](api/)** — FastAPI model serving (train → serialize → serve → predict → explain) with Dockerfile and docker-compose.
+- **[tests/](tests/)** — pytest suite covering ml_utils, data_loader, db_utils, API endpoints, and training pipeline.
 
 ---
 
@@ -123,6 +135,10 @@ Goal: a hiring manager or recruiter opens the repo and thinks *"we need to hire 
 | High | README leads with value prop + Quick links (this repo, nbviewer, resume, LinkedIn) | ✓ Done |
 | High | "Projects at a glance" table — one-line impact per project | ✓ Done |
 | High | "For recruiters & hiring managers" — 5-min tour + skills map | ✓ Done |
+| High | FastAPI model serving + Dockerfile (proves deployment ability) | ✓ Done |
+| High | pytest test suite (proves engineering discipline) | ✓ Done |
+| High | Quantified business impact in notebooks | ✓ Done |
+| High | DuckDB data engineering layer | ✓ Done |
 | Medium | Add real resume link and LinkedIn URL in README (replace placeholders) | |
 | Medium | Ensure GitHub repo description and topics are set (e.g. `data-science`, `machine-learning`, `portfolio`) | |
 | Low | Optional: 2–3 min Loom/walkthrough linked in README | |
