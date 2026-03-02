@@ -1,0 +1,78 @@
+/* Command-center / spy-style overrides — loads after Bootstrap theme */
+:root {
+  --bg-deep: #0a0e14;
+  --bg-card: #0d1117;
+  --bg-sidebar: #0b0f14;
+  --border-subtle: rgba(0, 212, 255, 0.15);
+  --accent-cyan: #00d4ff;
+  --accent-dim: #58a6ff;
+  --text-primary: #e6edf3;
+  --text-muted: #8b949e;
+  --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.12);
+}
+
+body {
+  background: var(--bg-deep) !important;
+  color: var(--text-primary) !important;
+  font-family: "JetBrains Mono", "SF Mono", "Consolas", monospace !important;
+}
+
+/* Navbar */
+.dash-navbar, .navbar {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--glow-cyan) !important;
+}
+
+/* Sidebar panel */
+.av-sidebar {
+  background: var(--bg-sidebar) !important;
+  border-right: 1px solid var(--border-subtle) !important;
+  box-shadow: 2px 0 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.av-sidebar .Select-control, .av-sidebar .VirtualizedSelectFocusedOption {
+  background: var(--bg-card) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+.av-sidebar label {
+  color: var(--text-muted) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* Map container — subtle glow */
+.av-map-wrapper {
+  border-radius: 12px !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--glow-cyan), inset 0 1px 0 rgba(255,255,255,0.03) !important;
+  overflow: hidden !important;
+}
+
+/* Cards */
+.av-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Range slider track */
+.rc-slider-track { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-dim)) !important; }
+.rc-slider-handle { border-color: var(--accent-cyan) !important; box-shadow: 0 0 8px rgba(0, 212, 255, 0.5) !important; }
+.rc-slider-handle-dragging { box-shadow: 0 0 16px rgba(0, 212, 255, 0.7) !important; }
+
+/* Value summary — terminal style */
+#value-summary {
+  font-family: "JetBrains Mono", monospace !important;
+  color: var(--accent-cyan) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Leaflet overrides so map controls fit dark theme */
+.leaflet-control-zoom a { background: var(--bg-card) !important; color: var(--text-primary) !important; border-color: var(--border-subtle) !important; }
+.leaflet-control-attribution { background: rgba(11, 15, 20, 0.9) !important; color: var(--text-muted) !important; font-size: 10px !important; }

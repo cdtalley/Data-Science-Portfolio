@@ -1,16 +1,24 @@
 # Chandler Drake Talley — Data Science Portfolio
 
-Production-grade ML projects spanning credit risk, customer retention, clinical decision support, **time series analysis**, transit operations, and quantitative finance. Each project includes **exploratory analysis**, **pipeline-based modeling** (no data leakage), **multi-metric evaluation**, **SHAP interpretability**, and **business recommendations**.
-
-- **Interactive dashboard:** `streamlit run app.py` — interactive EDA, model comparisons, SHAP, and live predictions.
-- **View notebooks on GitHub** or [nbviewer](https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/).
-- **Site:** [chandlerdraketalley.com/portfolio](https://chandlerdraketalley.com/portfolio/)
+**Senior data scientist who ships production ML and turns results into business impact.**  
+This repo is the evidence: pipelines that avoid leakage, stratified evaluation, SHAP interpretability, and stakeholder-ready recommendations across credit risk, churn, clinical triage, time series, and quant finance. **Everything lives here—no external portfolio site.**
 
 ---
 
-## What makes this portfolio different
+## Quick links
 
-Every notebook follows the workflow a senior data scientist uses in production:
+| | |
+|---|---|
+| **This repo** | [GitHub](https://github.com/cdtalley/Data-Science-Portfolio) — code, notebooks, and setup |
+| **View notebooks in browser** | [nbviewer](https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/) — no install required |
+| **Resume** | *[Add link: PDF in repo, Google Drive, or Dropbox]* |
+| **LinkedIn** | *[Add your LinkedIn profile URL]* |
+
+---
+
+## Why this portfolio stands out
+
+Every notebook follows the workflow a senior data scientist uses in production. These were built end-to-end by hand starting in 2020—before LLMs and GenAI—and many were developed alongside a senior data scientist with 30+ years of experience, with his review and approval. They have been refined since with pipelines, SHAP, and current best practices. Recruiters and hiring managers can run the code, see the same metrics, and judge rigor—not just slides.
 
 | Practice | Implementation |
 |---|---|
@@ -22,6 +30,39 @@ Every notebook follows the workflow a senior data scientist uses in production:
 | **Business framing** | Each project ends with stakeholder-ready recommendations and cost analysis |
 | **Threshold tuning** | Precision-recall tradeoff analysis with cost-sensitive optimization |
 | **Time series** | Daily trend, rolling means, day-of-week/hour seasonality, temporal heatmaps; `TimeSeriesSplit` and lag features where appropriate |
+
+---
+
+## Projects at a glance
+
+| Project | One-line impact |
+|--------|------------------|
+| **Corporate Bankruptcy** | Predict bankruptcy risk from 96 financials → credit exposure mitigation. |
+| **Telecom Churn** | Predict churn → cost-sensitive retention (e.g. $500 acquisition vs $75 offer). |
+| **Heart Disease** | Predict from biometrics → clinical triage with sensitivity-first metrics and calibration. |
+| **NJ Transit + Amtrak** | Predict delays from 98K trips → schedule padding, crew allocation, passenger alerts. |
+| **NYC Bus** | Cluster 6.7M bus records → segment-specific scheduling and anomaly detection. |
+| **Jane Street** | Predict profitable trades → position sizing and transaction-cost-aware signals. |
+| **RAG + LLM** | FAISS + Sentence Transformers + local LLM → no-api-key demo. |
+
+*Full project descriptions and tech stacks are in [Projects](#projects) below.*
+
+---
+
+## For recruiters & hiring managers
+
+**5-minute tour:**  
+1. Open [Modern_Classification_Workflow_Bankruptcy.ipynb](Modern_Classification_Workflow_Bankruptcy.ipynb) — end-to-end pipeline, CV, SHAP, and “why” in one place.  
+2. Run `streamlit run app.py` — interactive EDA, model comparison, SHAP, and live predictions.  
+3. Skim [docs/BEST_PRACTICES.md](docs/BEST_PRACTICES.md) — explains reproducibility, pipelines, and interpretability choices.
+
+**Skills demonstrated (mapping to typical job descriptions):**
+
+- **ML engineering:** `sklearn.Pipeline`, `ColumnTransformer`, stratified CV, hyperparameter tuning (GridSearchCV / RandomizedSearchCV).  
+- **Interpretability & compliance:** SHAP (TreeExplainer/KernelExplainer), feature importance, threshold tuning for cost-sensitive decisions.  
+- **Evaluation:** Multi-metric reporting (precision, recall, F1, ROC-AUC), calibration for probability outputs, time-series-aware splits.  
+- **Production hygiene:** Reproducible seeds, locked envs (`pyproject.toml` / `requirements.txt`), smoke tests for notebooks.  
+- **Business communication:** Each project ends with stakeholder recommendations and, where relevant, cost/benefit framing.
 
 ---
 

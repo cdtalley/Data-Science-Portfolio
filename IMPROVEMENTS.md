@@ -111,3 +111,19 @@ Run once: `python setup_data.py --no-jane-street`. Smoke test: `python scripts/s
 - README with setup and data verification command.
 
 Use this file as a living checklist: tick items as you implement them and add new 2026 techniques as you adopt them.
+
+---
+
+## Portfolio as a hiring asset (recruiter-first)
+
+Goal: a hiring manager or recruiter opens the repo and thinks *"we need to hire Drake Talley."*
+
+| Priority | Task | Status |
+|----------|------|--------|
+| High | README leads with value prop + Quick links (this repo, nbviewer, resume, LinkedIn) | ✓ Done |
+| High | "Projects at a glance" table — one-line impact per project | ✓ Done |
+| High | "For recruiters & hiring managers" — 5-min tour + skills map | ✓ Done |
+| Medium | Add real resume link and LinkedIn URL in README (replace placeholders) | |
+| Medium | Ensure GitHub repo description and topics are set (e.g. `data-science`, `machine-learning`, `portfolio`) | |
+| Low | Optional: 2–3 min Loom/walkthrough linked in README | |
+| Low | Optional: "What I'd do in the first 90 days" or case study tied to target role/industry | |

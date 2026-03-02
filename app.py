@@ -32,7 +32,7 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 st.sidebar.title("📊 Portfolio")
 st.sidebar.markdown("**Chandler Drake Talley**")
-st.sidebar.markdown("[GitHub](https://github.com/cdtalley/Data-Science-Portfolio) · [Website](https://chandlerdraketalley.com/portfolio/)")
+st.sidebar.markdown("[GitHub](https://github.com/cdtalley/Data-Science-Portfolio) · [View notebooks (nbviewer)](https://nbviewer.jupyter.org/github/cdtalley/Data-Science-Portfolio/tree/main/)")
 st.sidebar.divider()
 
 page = st.sidebar.radio(

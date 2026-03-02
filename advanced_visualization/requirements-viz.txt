@@ -1,0 +1,32 @@
+# Advanced Geospatial & Data Visualization stack
+# Install: pip install -r advanced_visualization/requirements-viz.txt
+# Use with portfolio core deps (e.g. requirements-core.txt) for pandas/numpy/jupyter.
+
+numpy>=1.23.0
+pandas>=2.0.0
+
+# Geospatial
+geopandas>=0.14.0
+shapely>=2.0.0
+folium>=0.15.0
+contextily>=1.4.0
+pyproj>=3.6.0
+
+# Interactive / web-style maps
+plotly>=5.18.0
+pydeck>=0.8.0
+
+# App (Dash: callback-based, no full-script rerun; dash-leaflet for geo)
+dash>=2.14.0
+dash-leaflet>=0.1.0
+dash-bootstrap-components>=1.5.0
+
+# Choropleths & classification
+mapclassify>=2.6.0
+
+# Optional: large-scale / GPU-style (uncomment if needed)
+# keplergl>=0.3.0
+# leafmap>=0.25.0
+
+# Optional: 3D / advanced (uncomment if needed)
+# kaleido  # static export for Plotly
